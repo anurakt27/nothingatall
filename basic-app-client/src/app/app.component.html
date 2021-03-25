@@ -1,0 +1,17 @@
+<div style="width: 30%; padding-left: 30px;">
+  <mat-form-field style="width: 100%;">
+    <mat-chip *ngFor="let file of fileList.controls" [selectable]="false" [removable]="true" (removed)="remove(file)">
+    {{file.value.name}}
+    <mat-icon matChipRemove>cancel</mat-icon>
+    </mat-chip>
+    <input [matChipInputFor]="chipList" readonly>
+    <input #hiddenFileInput type="file" multiple style="display: none;" (change)="add($event.target.files)"/> 
+    <mat-icon matSuffix (click)="hiddenFileInput.click()">attach_file</mat-icon>
+    <mat-chip-list #chipList>
+    </mat-chip-list>
+  </mat-form-field>
+    <button mat-flat-button color="primary" style="float: right;" (click)="onSubmit()">Submit</button>
+</div>
+<div style="width: 30%; padding-left: 30px;">
+  <p *ngFor="let email of emails"> {{email}}</p>
+</div>
